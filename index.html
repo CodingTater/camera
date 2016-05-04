@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cyborg/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body ng-controller="MyController">
+    <header class="page-header text-center">
+      <h2>Camera Shop</h2>
+    </header>
+    <main class="container">
+      <select ng-model="order">
+        <option value="-rating">Rating</option>
+        <option value="price">Price</option>
+      </select>
+      <div class="container" ng-repeat="camera in cameras | orderBy : order">
+        <h3>{{camera.title}}</h3>
+        <img src="{{camera.image}}" alt="{{camera.title}}" />
+        <h4 ng-class="{sale: camera.onSale}" >Price: {{camera.price | currency}} <span ng-show="{{camera.onSale}}">OMG!!! On Sale!</span></h4>
+        <h4>Rating: {{camera.rating}}</h4>
+      </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" charset="utf-8"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
